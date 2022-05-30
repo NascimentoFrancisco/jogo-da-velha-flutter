@@ -15,6 +15,8 @@ class _HomeGamePageState extends State<HomeGamePage> {
   int Score_x = 0;
   int toosblocos = 0;
 
+  bool _vencedor = false;
+
   List<String> ElementosTela = ['','','','','','','','',''];
 
   
@@ -135,31 +137,39 @@ class _HomeGamePageState extends State<HomeGamePage> {
   void _verificaVencedor(){
     //Verificando as linhas
     if(ElementosTela[0] == ElementosTela[1] && ElementosTela[0] == ElementosTela[2] && ElementosTela[0] != ''){
+      _vencedor = true;
       _mostraDialogo(ElementosTela[0]);
     }
     if(ElementosTela[3] == ElementosTela[4] && ElementosTela[3] == ElementosTela[5] && ElementosTela[3] != ''){
+      _vencedor = true;
       _mostraDialogo(ElementosTela[3]);
     }
     if(ElementosTela[6] == ElementosTela[7] && ElementosTela[6] == ElementosTela[8] && ElementosTela[6] != ''){
+      _vencedor = true;
       _mostraDialogo(ElementosTela[6]);
     }
     //Verificando as colunas
     if(ElementosTela[0] == ElementosTela[3] && ElementosTela[0] == ElementosTela[6] && ElementosTela[0] != ''){
+      _vencedor = true;
       _mostraDialogo(ElementosTela[0]);
     }
     if(ElementosTela[1] == ElementosTela[4] && ElementosTela[1] == ElementosTela[7] && ElementosTela[1] != ''){
+      _vencedor = true;
       _mostraDialogo(ElementosTela[1]);
     }
     if(ElementosTela[2] == ElementosTela[5] && ElementosTela[2] == ElementosTela[8] && ElementosTela[2] != ''){
+      _vencedor = true;
       _mostraDialogo(ElementosTela[2]);
     }
     //Verificando Diagonais
     if(ElementosTela[0] == ElementosTela[4] && ElementosTela[0] == ElementosTela[8] && ElementosTela[0] != ''){
+      _vencedor = true;
       _mostraDialogo(ElementosTela[0]);
     }
     if(ElementosTela[2] == ElementosTela[4] && ElementosTela[2] == ElementosTela[6] && ElementosTela[2] != ''){
+      _vencedor = true;
       _mostraDialogo(ElementosTela[2]);
-    } else if(toosblocos == 9){
+    } else if(!_vencedor && toosblocos == 9){
       _mostraPerdaDialogo();
     } 
   }
@@ -211,6 +221,7 @@ class _HomeGamePageState extends State<HomeGamePage> {
       }
     });
     toosblocos = 0;
+    _vencedor = false;
   }
 
 }
